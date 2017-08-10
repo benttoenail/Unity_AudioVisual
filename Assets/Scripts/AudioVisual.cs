@@ -16,25 +16,60 @@ using UnityEngine;
 public class AudioVisual : MonoBehaviour {
 
     AudioSource _audio;
-    public float[] specturm = new float[512];
-    public float test = 10;
+	public static float[] specturm = new float[512];
+	public static float[] freqBands = new float[8];
 
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		
         _audio = GetComponent<AudioSource>();
+
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 
         GetAudioSpecturm();
-
+		MakeFrequencyBands();
     }
 
     public void GetAudioSpecturm()
     {
+		
         _audio.GetSpectrumData(specturm, 0, FFTWindow.Blackman);
+
     }
+
+
+	void MakeFrequencyBands()
+	{
+		
+		int count = 0;
+
+		for(int i = 0; i < 8; i++)
+		{
+			int sampleCount = (int)Mathf.Pow(2, i) * 2;
+			float average = 0;
+
+			if( i == 7 ){
+				sampleCount += 2;
+			}
+
+
+			for(int j = 0; j < sampleCount; j++)
+			{
+				average += specturm[count] * (count + 1);
+				count++;
+			}
+
+			average /= count;
+
+			freqBands[i] = average;
+
+		}
+	}
 
 }

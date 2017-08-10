@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Spawn512Cubes : MonoBehaviour {
 
-    public GameObject audioSource;
-    AudioVisual _audioVisual;
-
     //Main Variables
     public float radius;
     public int objectNumber;
@@ -28,11 +25,9 @@ public class Spawn512Cubes : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        _audioVisual = audioSource.GetComponent<AudioVisual>();
-
 
         Vector3 centerPoint = this.gameObject.transform.position;
-        count = _audioVisual.specturm.Length;
+		count = AudioVisual.specturm.Length;
         slice = Mathf.PI * 2 / count;
 
         //Instatiate Objects
@@ -68,7 +63,7 @@ public class Spawn512Cubes : MonoBehaviour {
     {
         for(int i = 0; i < count; i++)
         {
-            RadialObjs[i].transform.localScale = new Vector3(1, 1, _audioVisual.specturm[i] * spectrumHeight + 1);
+			RadialObjs[i].transform.localScale = new Vector3(1, 1, AudioVisual.specturm[i] * spectrumHeight + 1);
         }
     }
 

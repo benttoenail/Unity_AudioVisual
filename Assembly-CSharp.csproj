@@ -53,6 +53,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AudioVisual.cs" />
      <Compile Include="Assets\Scripts\CameraRotate.cs" />
+     <Compile Include="Assets\Scripts\CubeFreqBand.cs" />
+     <Compile Include="Assets\Scripts\ReferenceObjects.cs" />
      <Compile Include="Assets\Scripts\Spawn512Cubes.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
